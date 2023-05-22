@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const Banner = () => {
     return (
@@ -11,7 +12,7 @@ const Banner = () => {
                     For many, food is an experience. It is both a science and an art. It is meant to be savored and enjoyed.In a culture with such passion for food, it is no surprise that we also like talking about it.
                 </h1>
                 <div>
-                <button className='btn'>See More</button>
+                <Link to="/blog"><button className='btn'>See More</button></Link>
                 </div>
             </div>
         </div>
