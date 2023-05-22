@@ -12,7 +12,7 @@
 }
 
 .btn {
-    @apply py-3 px-4 rounded font-bold text-white  hover:bg-white hover:text-black hover:border-separate hover:border-2
+    @apply py-3 px-4 rounded font-bold bg-black text-white  hover:bg-white hover:text-black hover:border-separate hover:border-2
 }
 .text-color{
     @apply bg-gradient-to-r from-indigo-400 to-violet-500 inline-block text-transparent bg-clip-text
