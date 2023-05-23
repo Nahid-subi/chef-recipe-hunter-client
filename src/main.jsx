@@ -11,6 +11,8 @@ import Home from './components/Home/Home.jsx';
 import Login from './components/Login-Register/Login.jsx';
 import Register from './components/Login-Register/Register.jsx';
 import Blog from './components/Blog.jsx';
+import ChefDetail from './components/Home/ChefDetail.jsx';
+
 
 
 
@@ -23,7 +25,7 @@ const router = createBrowserRouter([
       {
         path:'/',
         element:<Home></Home>,
-        loader: ()=>fetch("http://localhost:5000/data")
+        loader: ()=>fetch("https://recipe-server-side-nahid-subi.vercel.app/data"),
       },
       {
         path:'blog',
@@ -36,6 +38,11 @@ const router = createBrowserRouter([
       {
         path:'register',
         element:<Register></Register>,
+      },
+      {
+        path: "chefdetail/:id",
+        element:<ChefDetail></ChefDetail>,
+        loader: ({params}) => fetch(`https://recipe-server-side-nahid-subi.vercel.app/data/${params.id}`)
       },
     ],
   },
