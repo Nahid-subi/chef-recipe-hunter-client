@@ -12,6 +12,7 @@ import Login from './components/Login-Register/Login.jsx';
 import Register from './components/Login-Register/Register.jsx';
 import Blog from './components/Blog.jsx';
 import ChefDetail from './components/Home/ChefDetail.jsx';
+import { Toaster } from 'react-hot-toast';
 
 
 
@@ -51,5 +52,6 @@ const router = createBrowserRouter([
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <RouterProvider router={router} />
+    <Toaster></Toaster>
   </React.StrictMode>,
 )

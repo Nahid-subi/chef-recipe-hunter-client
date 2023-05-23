@@ -7,8 +7,8 @@ import RecipeCard from './RecipeCard';
 
 const ChefDetail = ({ data }) => {
     const chefData = useLoaderData()
-    const { picture, likes, name, recipes, experience, bio, recipesList ,id} = chefData;
-    
+    const { picture, likes, name, recipes, experience, bio, recipesList, id } = chefData;
+
     return (
         <div className='max-w-screen-xl mx-auto'>
             {/*chef banner section */}
@@ -24,14 +24,18 @@ const ChefDetail = ({ data }) => {
                     <h4 className='text-lg'>Number of Recipes: {recipes}</h4>
                 </div>
             </section>
-            <section>
-                <h1>Some Recipes</h1>
-                {
-                       chefData.recipesList.map(data => <RecipeCard
-                        key={data.id}
-                        data={data}
-                    ></RecipeCard>)
-                }
+            <section className='my-9'>
+                <h1 className='text-center text-2xl font-semibold my-10'>Some Recipes</h1>
+                <div className='flex justify-center items-center'>
+                    <div className='grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10'>
+                        {
+                            chefData.recipesList.map(data => <RecipeCard
+                                key={data.id}
+                                data={data}
+                            ></RecipeCard>)
+                        }
+                    </div>
+                </div>
             </section>
         </div>
     );

@@ -2,12 +2,12 @@ import React, { useState } from 'react';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 import 'react-lazy-load-image-component/src/effects/blur.css';
 import {
-  HandThumbUpIcon, 
+  HandThumbUpIcon,
 } from '@heroicons/react/24/solid'
 import { Link } from 'react-router-dom';
 
 const ChefCard = ({ data }) => {
-  const { experience, likes, name, picture, recipes ,id} = data;
+  const { experience, likes, name, picture, recipes, id } = data;
   const [isImageLoaded, setIsImageLoaded] = useState(false);
 
   const handleImageLoad = () => {
@@ -30,7 +30,7 @@ const ChefCard = ({ data }) => {
           <p className='flex gap-1'>Likes:   <HandThumbUpIcon className='w-5 text-gray-600' /> {likes}</p>
           <p>Number of Recipes: {recipes}</p>
           <div className="card-actions justify-end">
-           <Link to={`/chefdetail/${id}`}> <button className="btn">View Recipes</button></Link>
+            <Link to={`/chefdetail/${id}`}> <button className="btn">View Recipes</button></Link>
           </div>
         </div>
       </div>
