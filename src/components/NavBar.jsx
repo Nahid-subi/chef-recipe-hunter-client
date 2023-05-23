@@ -36,7 +36,7 @@ const NavBar = () => {
                         </NavLink>
                     </li>
                 </ul>
-                <button className='hidden lg:block btn'>Login</button>
+                <Link to="login"><button className='hidden lg:block btn'>Login</button></Link>
                 {/* Mobile Navbar Section */}
                 <div className='lg:hidden'>
                     {/* Dropdown Open Button */}

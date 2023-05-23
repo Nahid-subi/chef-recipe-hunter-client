@@ -15,7 +15,7 @@ const ChefCard = ({ data }) => {
   };
 
   return (
-    <div>
+    <div className='mx-2'>
       <div className="card max-w-sm glass">
         <LazyLoadImage
           effect="blur"

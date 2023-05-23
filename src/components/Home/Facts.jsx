@@ -3,8 +3,8 @@ import React from 'react';
 const Facts = () => {
     return (
         <div className='max-w-screen-xl mx-auto my-10'>
-            <h1 className='text-center text-2xl font-semibold my-8'>Some Facts About Chinese Food</h1>
-            <div className='grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10'>
+            <h1 className='text-center text-2xl font-semibold my-8 mx-2'>Some Facts About Chinese Food</h1>
+            <div className='grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 mx-2'>
                 <div className='border-4 rounded-lg p-2'>
                     <h2 className='font-semibold'>Chinese food is one of the healthiest in the world.</h2>
                     <p>

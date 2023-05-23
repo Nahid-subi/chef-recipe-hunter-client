@@ -1,12 +1,20 @@
 import React from 'react';
 import { useLoaderData } from 'react-router-dom';
-import {
-    HandThumbUpIcon,
-} from '@heroicons/react/24/solid'
+import { HandThumbUpIcon } from '@heroicons/react/24/solid';
 import RecipeCard from './RecipeCard';
 
 const ChefDetail = ({ data }) => {
-    const chefData = useLoaderData()
+    const chefData = useLoaderData();
+    const isLoading = Object.keys(chefData).length === 0; // Check if chefData object is empty to indicate loading state
+
+    if (isLoading) {
+        return (
+            <div className="text-center mt-8">
+                <Spinner /> {/* Replace Spinner with your loading indicator component */}
+            </div>
+        );
+    }
+
     const { picture, likes, name, recipes, experience, bio, recipesList, id } = chefData;
 
     return (
@@ -28,12 +36,9 @@ const ChefDetail = ({ data }) => {
                 <h1 className='text-center text-2xl font-semibold my-10'>Some Recipes</h1>
                 <div className='flex justify-center items-center'>
                     <div className='grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10'>
-                        {
-                            chefData.recipesList.map(data => <RecipeCard
-                                key={data.id}
-                                data={data}
-                            ></RecipeCard>)
-                        }
+                        {recipesList.map(data => (
+                            <RecipeCard key={data.id} data={data}></RecipeCard>
+                        ))}
                     </div>
                 </div>
             </section>
