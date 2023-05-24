@@ -1,12 +1,14 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, Navigate } from 'react-router-dom';
 import { FaGoogle, FaGithub } from 'react-icons/fa';
 import { UserAuth } from '../../providers/AuthContext';
 
 const Login = () => {
-    const { emailSignIn, googleSignIn, githubSignIn, error } = UserAuth(); // Add `error` to the destructured values
+    const { emailSignIn, googleSignIn, githubSignIn, error, user } = UserAuth();
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const location = useLocation();
+    const from = location.state?.from?.pathname || "/";
 
     const handleEmailSignIn = async () => {
         try {
@@ -33,6 +35,11 @@ const Login = () => {
             console.log(error);
         }
     };
+
+    if (user) {
+        // Redirect to the 'from' route if the user is already authenticated
+        return <Navigate to={from} />;
+    }
 
     return (
         <div>

@@ -13,6 +13,7 @@ import Register from './components/Login-Register/Register.jsx';
 import Blog from './components/Blog.jsx';
 import ChefDetail from './components/Home/ChefDetail.jsx';
 import { Toaster } from 'react-hot-toast';
+import PrivateRoute from './Routes/PrivateRoute.jsx';
 
 
 
@@ -42,7 +43,7 @@ const router = createBrowserRouter([
       },
       {
         path: "chefdetail/:id",
-        element:<ChefDetail></ChefDetail>,
+        element:<PrivateRoute><ChefDetail></ChefDetail>,</PrivateRoute>,
         loader: ({params}) => fetch(`https://recipe-server-side-nahid-subi.vercel.app/data/${params.id}`)
       },
     ],
