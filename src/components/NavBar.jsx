@@ -4,8 +4,19 @@ import {
     Bars3BottomRightIcon,
     XMarkIcon,
 } from '@heroicons/react/24/solid'
+import { UserAuth } from '../providers/AuthContext';
+import { signOut } from 'firebase/auth';
 
 const NavBar = () => {
+    const { user, logOut } = UserAuth();
+    const handleSignOut = async () => {
+        try {
+            await logOut()
+        }
+        catch (error) {
+            console.log(error)
+        }
+    }
     const [isMenuOpen, setIsMenuOpen] = useState(false)
     return (
         <div className='bg-gray-100 px-4 py-5 mx-auto sm:max-w-full md:max-w-full lg:max-w-full'>
@@ -13,7 +24,7 @@ const NavBar = () => {
                 {/* Logo Section */}
                 <Link to='/' className='inline-flex items-center'>
                     <span className='ml-2 text-xl font-bold tracking-wide text-gray-800'>
-                    Chinese recipes
+                        Chinese recipes
                     </span>
                 </Link>
 
@@ -36,7 +47,13 @@ const NavBar = () => {
                         </NavLink>
                     </li>
                 </ul>
-                <Link to="login"><button className='hidden lg:block btn'>Login</button></Link>
+                {
+                    user ? <h1 className='lg:flex hidden'>
+                        <button onClick={handleSignOut} className='btn'>LogOut</button>
+                        <img className='w-12 mx-2 rounded-full' src={user.photoURL} alt="" title={user.displayName} /></h1>
+                        : <Link to="login"><button className='hidden lg:block btn'>Login</button></Link>
+                }
+
                 {/* Mobile Navbar Section */}
                 <div className='lg:hidden'>
                     {/* Dropdown Open Button */}
@@ -45,7 +62,7 @@ const NavBar = () => {
                         title='Open Menu'
                         onClick={() => setIsMenuOpen(true)}
                     >
-                      <Bars3BottomRightIcon className='w-5 text-gray-600' />
+                        <Bars3BottomRightIcon className='w-5 text-gray-600' />
                     </button>
                     {isMenuOpen && (
                         <div className='absolute top-0 left-0 w-full z-10'>
@@ -86,9 +103,12 @@ const NavBar = () => {
                                                 Blog
                                             </Link>
                                         </li>
-                                    </ul>
-                                    <button className='btn my-4'>Login</button>
-
+                                        <li>
+                                          {
+                                            user ?  <h1> <button onClick={handleSignOut} className='btn'>LogOut</button> <img className='w-12 my-2 rounded-full' src={user.photoURL} alt="" title={user.displayName} /> </h1>: <Link to="/login"><button className='btn'>Login</button></Link>
+                                          }
+                                        </li>
+                                    </ul> 
                                 </nav>
                             </div>
                         </div>
