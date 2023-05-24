@@ -13,12 +13,12 @@ const App = () => {
         </div>
         <div className="flex-grow">
           <Outlet />
-        </div>
+        </div> 
         <Footer />
       </AuthContextProvider>
     </div>
   );
-};
+}; 
 
 export default App;
 
