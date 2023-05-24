@@ -1,10 +1,22 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { FaGoogle, FaGithub } from 'react-icons/fa';
 import { UserAuth } from '../../providers/AuthContext';
 
 const Login = () => {
-    const { googleSignIn, githubSignIn } = UserAuth();
+    const { emailSignIn, googleSignIn, githubSignIn, error } = UserAuth(); // Add `error` to the destructured values
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+
+    const handleEmailSignIn = async () => {
+        try {
+            await emailSignIn(email, password);
+            setEmail('');
+            setPassword('');
+        } catch (error) {
+            console.log(error);
+        }
+    };
 
     const handleGoogleSignIn = async () => {
         try {
@@ -35,24 +47,41 @@ const Login = () => {
                     </div>
                     <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
                         <div className="card-body">
+                            {error && <p className="text-red-500 mb-4">{error}</p>} {/* Display error message if it exists */}
                             <div className="form-control">
                                 <label className="label">
                                     <span className="label-text">Email</span>
                                 </label>
-                                <input type="text" placeholder="email" name="email" required className="input input-bordered" />
+                                <input
+                                    type="email"
+                                    placeholder="email"
+                                    name="email"
+                                    value={email}
+                                    onChange={(e) => setEmail(e.target.value)}
+                                    required
+                                    className="input input-bordered"
+                                />
                             </div>
                             <div className="form-control">
                                 <label className="label">
                                     <span className="label-text">Password</span>
                                 </label>
-                                <input type="text" placeholder="password" name="password" required className="input input-bordered" />
+                                <input
+                                    type="password"
+                                    placeholder="password"
+                                    name="password"
+                                    value={password}
+                                    onChange={(e) => setPassword(e.target.value)}
+                                    required
+                                    className="input input-bordered"
+                                />
                                 <span className="my-3">
                                     {' '}
                                     Don't Have an Account <Link className="link link-primary" to="/register">Register</Link>
                                 </span>
                             </div>
                             <div className="form-control mt-6">
-                                <button className="btn">Login</button>
+                                <button onClick={handleEmailSignIn} className="btn">Login</button>
                             </div>
                             or
                             <div>
