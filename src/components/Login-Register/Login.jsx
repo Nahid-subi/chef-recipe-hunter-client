@@ -90,12 +90,11 @@ const Login = () => {
                             <div className="form-control mt-6">
                                 <button onClick={handleEmailSignIn} className="btn">Login</button>
                             </div>
-                            or
-                            <div>
+                            <span className='text-center font-bold'>or</span>
+                            <div className='flex flex-col items-center'>
                                 <button onClick={handleGoogleSignIn} className="btn">
                                     Login With Google <FaGoogle className="mx-2" />
                                 </button>
-                                <br />
                                 <br />
                                 <button onClick={handleGithubSignIn} className="btn">
                                     Login With GitHub <FaGithub className="mx-2" />

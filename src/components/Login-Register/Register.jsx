@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { UserAuth } from '../../providers/AuthContext';
+import { Link } from 'react-router-dom';
 
 const Register = () => {
     const { emailSignUp, error } = UserAuth();
@@ -112,6 +113,11 @@ const Register = () => {
                                     <button type="submit" className="btn btn-primary">
                                         Register
                                     </button>
+                                </div>
+                                <div className='my-4'>
+                                <span className="my-4">
+                                    You Have Already Account <Link className="link link-primary" to="/login">Login</Link>
+                                </span>
                                 </div>
                             </form>
                             {validationError && <p className="text-red-500 mt-4">{validationError}</p>}
